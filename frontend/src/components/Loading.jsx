@@ -1,7 +1,10 @@
 const Loading = () => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
-      <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm" role="status" aria-live="polite" aria-label="Loading">
+      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card px-8 py-6 shadow-xl">
+        <div className="size-8 animate-spin rounded-full border-2 border-muted-foreground/30 border-t-primary" />
+        <span className="text-sm text-muted-foreground">Loading your workspace</span>
+      </div>
     </div>
   );
 };

@@ -33,7 +33,7 @@ const SaveJob = () => {
       <div className='w-full flex flex-wrap gap-2  '>
         {loading?(<></>):savejob.length!=0?(<div className='w-full'>
           <ul className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2' >
-            {savejob.map((curElem)=><JobCard curElem={curElem}/>)}
+            {savejob.map((curElem)=><JobCard key={curElem._id} curElem={{...curElem, isSaved: true}} hideSave />)}
           </ul>
 
 

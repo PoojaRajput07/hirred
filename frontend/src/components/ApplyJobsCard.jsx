@@ -11,10 +11,7 @@ const ApplyJobsCard = ({ curElem }) => {
   const { skills, createdAt, status, job } = curElem;
 
   return (
-    <div className="bg-gray-800 w-full border rounded-xl p-5 flex flex-col gap-4 text-white relative">
-
-      {/* Status Badge (Top Right) */}
-     
+    <div className="group relative w-full rounded-2xl border border-border bg-card/80 p-5 text-card-foreground shadow-sm transition hover:border-primary/50 hover:shadow-lg">
 
       {/* Job Header */}
       <div className="flex flex-col gap-1 mt-5">

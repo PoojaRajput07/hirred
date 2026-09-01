@@ -207,6 +207,7 @@ console.log("role",role);
               <li key={index}>{curElem}</li>))
               }
           </ul>
+          {role === 'recruiter' && <Button variant='outline' onClick={() => navigate(`/postajob?edit=${id}`)}>Edit listing</Button>}
           {
             role=="candidate"?  <Drawer >
       <DrawerTrigger asChild>
