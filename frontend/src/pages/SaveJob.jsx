@@ -5,21 +5,24 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SaveJob = () => {
-  const{loading,setLoading}=useContext(AppContext);
-  const[savejob,setSavejob]=useState([]);
+  const { loading, setLoading } = useContext(AppContext);
+  const [savejob, setSavejob] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
   const navigate=useNavigate();
   const SaveJobs=async()=>{
     try {
      
        const res=await fetchSaveJobs();
        console.log("respnse of fetching saved jobs",res);
-       setSavejob(res.data.savedjobs);
+       setSavejob(res.data.savedjobs || []);
     } catch (error) {
   console.log("error i fetching saved jobs", error);
   const message = error?.response?.data?.message;
   if (message?.includes("no token")) {
     navigate("/login");
   }
+} finally {
+  setIsFetching(false);
 }
     
   }
@@ -31,7 +34,7 @@ const SaveJob = () => {
     <div className=' min-h-screen flex flex-col items-center mx-2  '>
       <h1 className='rammetto-one-regular text-lg md:text-2xl my-3'>Saved Jobs</h1>
       <div className='w-full flex flex-wrap gap-2  '>
-        {loading?(<></>):savejob.length!=0?(<div className='w-full'>
+        {isFetching ? <div className='grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'><div className='h-48 animate-pulse rounded-xl bg-muted' /><div className='h-48 animate-pulse rounded-xl bg-muted' /><div className='h-48 animate-pulse rounded-xl bg-muted' /></div> : savejob.length!=0?(<div className='w-full'>
           <ul className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2' >
             {savejob.map((curElem)=><JobCard key={curElem._id} curElem={{...curElem, isSaved: true}} hideSave />)}
           </ul>

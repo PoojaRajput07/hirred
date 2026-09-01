@@ -69,11 +69,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#010e17] flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen w-full bg-background flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
 
         {/* Signup Card */}
-        <div className="bg-[#071a26] border border-gray-700 rounded-xl shadow-2xl p-6 sm:p-8">
+        <div className="bg-card border border-border rounded-2xl shadow-2xl p-6 sm:p-8">
 
           {/* Header */}
           <div className="text-center mb-7">
@@ -107,7 +107,7 @@ const Signup = () => {
                 autoComplete="email"
                 value={registerData.email}
                 onChange={handleChange}
-                className="h-11 w-full bg-[#0d2533] border-gray-600 text-white placeholder:text-gray-500 focus:border-yellow-400 focus:ring-yellow-400"
+                className="h-11 w-full bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary"
               />
             </div>
 
@@ -130,7 +130,7 @@ const Signup = () => {
                   autoComplete="new-password"
                   value={registerData.password}
                   onChange={handleChange}
-                  className="h-11 w-full pr-11 bg-[#0d2533] border-gray-600 text-white placeholder:text-gray-500 focus:border-yellow-400 focus:ring-yellow-400"
+                  className="h-11 w-full pr-11 bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary"
                 />
 
                 <button

@@ -164,7 +164,8 @@ console.log("role",role);
   }
   
   return (
-    <div className=' min-h-screen flex flex-col items-center mx-3 mt-5  gap-4 items-left'>
+    <div className='mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-6 py-2'>
+         <div className='rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8'>
          <h1 className='  rammetto-one-regular w-full text-left text-2xl '>{data.title}</h1>
          <div className=' w-full grid grid-cols-3 gap-1 text-sm  justify-center bg-white/20 backdrop-blur-lg border border-white/30 rounded-sm shadow-lg'>
           <p className='flex items-center gap-1'><FaLocationDot />{data.location}</p>
@@ -278,6 +279,7 @@ console.log("role",role);
       
       
       
+         </div>
     </div>
   )
 }

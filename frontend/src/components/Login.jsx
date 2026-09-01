@@ -75,7 +75,7 @@ const Login = () => {
       <div className="w-full max-w-md">
 
         {/* Login Card */}
-        <div className="bg-[#071a26] border border-gray-700 rounded-xl shadow-2xl p-6 sm:p-8">
+        <div className="bg-card border border-border rounded-2xl shadow-2xl p-6 sm:p-8">
 
           {/* Header */}
           <div className="text-center mb-8">
@@ -109,7 +109,7 @@ const Login = () => {
                 autoComplete="email"
                 value={loginData.email}
                 onChange={handleChange}
-                className="h-11 w-full bg-[#0d2533] border-gray-600 text-white placeholder:text-gray-500 focus:border-yellow-400 focus:ring-yellow-400"
+                className="h-11 w-full bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary"
               />
             </div>
 
@@ -142,7 +142,7 @@ const Login = () => {
                   autoComplete="current-password"
                   value={loginData.password}
                   onChange={handleChange}
-                  className="h-11 w-full pr-11 bg-[#0d2533] border-gray-600 text-white placeholder:text-gray-500 focus:border-yellow-400 focus:ring-yellow-400"
+                  className="h-11 w-full pr-11 bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary"
                 />
 
                 <button
