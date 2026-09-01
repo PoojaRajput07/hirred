@@ -1,46 +1,33 @@
-import Login from '@/components/Login';
 import { Button } from '@/components/ui/button'
-import { Carousel } from '@/components/ui/carousel'
 import { AppContext } from '@/Context/AppContext';
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const { login, role } = useContext(AppContext);
+  const destination = login ? (role === 'recruiter' ? '/postajob' : '/jobs') : '/signup';
 
-  return (
-    <>
-  
-    <div className='flex flex-col gap-8 relative justify-center items-center mt-20 mx-10   '>
-   
-      <section className='w-full  mt-3 text-center px-8'>
-        <h1 className=" rammetto-one-regular text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl  h-full w-full text-center leading-normal ">
-           Find your Dream Job and     
-          <span className='ml-2 inline-flex  justify-center items-center '> get  <img src="/logo.png" className='w-24 sm:w-26 md:w-30 lg:w-70 xl:w-60'/></span>
-        </h1>
-      </section>
-      <p className='font-semibold text-sm xl:text-lg text-center text-gray-300'>Explore thousands of job listings or find the perfect candidate</p>
-      <div className='flex gap-4 justify-center'>
-       <Button variant='secondary' className=" xl:px-xl xl:py-xl xl:text-xl xl:h-20 xl:w-45" onClick={()=>navigate("/jobs")}>Find Job</Button>
-       <Button variant='destructive' className="xl:px-xl xl:py-xl xl:text-xl xl:h-20 xl:w-45" onClick={()=>navigate("/postajob")}>Post Job</Button>
+  return <div className='flex flex-col gap-12'>
+    <section className='mx-auto flex max-w-4xl flex-col items-center gap-6 pt-8 text-center sm:pt-12'>
+      <p className='text-sm font-semibold uppercase tracking-[0.25em] text-gray-400'>The smarter way to get hired</p>
+      <h1 className='rammetto-one-regular text-balance text-3xl leading-tight sm:text-5xl lg:text-6xl'>Find your dream job and get hired</h1>
+      <p className='max-w-2xl text-pretty text-base leading-6 text-gray-300 sm:text-lg'>Discover meaningful opportunities, build your career, and help great teams find their next standout hire.</p>
+      <div className='flex flex-wrap justify-center gap-3'>
+        <Button variant='secondary' className='px-6' onClick={() => navigate('/jobs')}>Find a job</Button>
+        <Button variant='destructive' className='px-6' onClick={() => navigate(destination)}>{role === 'recruiter' ? 'Post a job' : 'Get started'}</Button>
       </div>
-
-      <Carousel/>
-      <img src="/banner.jpeg"/>
-      <div className='flex-col w-full gap-4'>
-        <div className=' p-4 w-full rounded bg-[#01172f]  border-1 border-gray-700  h-20  flex flex-col justify-center '>
-         <h1 className='font-bold '>For Job Seekers</h1> 
-         <p>Search and apply for jobs, track applications, and more.</p>
-        </div>
-         <div className='p-4 w-full rounded bg-[#01172f] border-1 border-gray-700 h-20  flex flex-col justify-center   '>
-         <h1>For Job Seekers</h1> 
-         <p>Search and apply for jobs, track applications, and more.</p>
-        </div>
-      </div>
-    </div>
-    </>
-   
-  )
+    </section>
+    <img src='/banner.jpeg' alt='People collaborating at work' className='h-48 w-full rounded-lg object-cover sm:h-72' />
+    <section className='grid gap-4 md:grid-cols-2'>
+      <button onClick={() => navigate('/jobs')} className='rounded-lg border border-gray-700 bg-[#01172f] p-6 text-left transition hover:border-gray-500'>
+        <h2 className='text-xl font-bold'>For candidates</h2><p className='mt-2 leading-6 text-gray-300'>Search relevant roles, save your favorites, and track every application from one place.</p><span className='mt-5 inline-block text-sm font-semibold text-gray-200'>Explore jobs →</span>
+      </button>
+      <button onClick={() => navigate(login && role === 'recruiter' ? '/postajob' : '/role')} className='rounded-lg border border-gray-700 bg-[#01172f] p-6 text-left transition hover:border-gray-500'>
+        <h2 className='text-xl font-bold'>For recruiters</h2><p className='mt-2 leading-6 text-gray-300'>Reach qualified talent, manage your listings, and build your next great team.</p><span className='mt-5 inline-block text-sm font-semibold text-gray-200'>{login ? 'Post a job →' : 'Start hiring →'}</span>
+      </button>
+    </section>
+  </div>
 }
 
 export default LandingPage

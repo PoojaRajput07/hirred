@@ -26,12 +26,14 @@ const MyJobs = () => {
     fetchmyjobs();
   },[])
   return (
-    <div className='w-full min-h-screen flex-flex-col items-center '>
-
-      <h1 className='rammetto-one-regular text-center w-full'>My jobs</h1>
-
-     { myjob.length==0?<h1>no job posted by you</h1>:<ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-2'>
-      {myjob.map((curElem)=><JobCard curElem={curElem}/>)}
+    <div className='w-full min-h-screen'>
+      <div className='mb-8 flex flex-col gap-2 border-b border-border pb-6'>
+        <p className='text-xs font-semibold uppercase tracking-widest text-muted-foreground'>Recruiter workspace</p>
+        <h1 className='rammetto-one-regular text-2xl'>Your job postings</h1>
+        <p className='text-sm text-muted-foreground'>Manage listings, review applicants, and keep hiring moving.</p>
+      </div>
+     { myjob.length==0?<h1 className='rounded-xl border border-dashed border-border p-10 text-center text-muted-foreground'>No jobs posted yet</h1>:<ul className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
+      {myjob.map((curElem)=><div key={curElem._id} className='flex flex-col gap-3'><JobCard curElem={curElem}/><button className='text-sm text-primary hover:underline' onClick={()=>window.location.href=`/jobdetail/${curElem._id}`}>Review applicants and edit listing</button></div>)}
       </ul>}
 
 

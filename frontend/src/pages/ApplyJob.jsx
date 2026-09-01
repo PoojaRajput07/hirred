@@ -31,8 +31,12 @@ if (message?.includes("no token")) {
   },[])
   return (
 
-    <div className='w-full min-h-screen text-center '>
-      <h1 className='rammetto-one-regular my-2 '>APPLIED JOBS</h1>
+    <div className='w-full min-h-screen'>
+      <div className='mb-8 flex flex-col gap-2 border-b border-border pb-6'>
+        <p className='text-xs font-semibold uppercase tracking-widest text-muted-foreground'>Candidate workspace</p>
+        <h1 className='rammetto-one-regular text-2xl'>My applications</h1>
+        <p className='text-sm text-muted-foreground'>Track every opportunity from submission to interview.</p>
+      </div>
       {appliedjob.length!=0?<div>
         <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-2'>
         {appliedjob.map((curElem)=>{return <ApplyJobsCard curElem={curElem}/>})}
